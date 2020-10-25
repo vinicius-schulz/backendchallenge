@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.trustly.schulz.backendchallenge.dto.ListGitDetailDto;
-import br.com.trustly.schulz.backendchallenge.service.GroupedGitDataService;
+import br.com.trustly.schulz.backendchallenge.service.GitHubRepositoryInformationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 public class GitRepositoryInformationController {
 
 	@Autowired
-	private GroupedGitDataService groupedGitDataService;
+	private GitHubRepositoryInformationService gitHubRepositoryInformationService;
 
 	@Operation(summary = "Get Github's Public Repository Details")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Details found", content = {
@@ -31,6 +31,7 @@ public class GitRepositoryInformationController {
 	@GetMapping("/github/{workspace}/{repository}")
 	public ResponseEntity<ListGitDetailDto> getGithubRepositoryDetails(@PathVariable String workspace,
 			@PathVariable String repository) {
-		return ResponseEntity.ok().body(groupedGitDataService.getGithubRepositoryDetails(workspace, repository));
+		return ResponseEntity.ok()
+				.body(gitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
 	}
 }
