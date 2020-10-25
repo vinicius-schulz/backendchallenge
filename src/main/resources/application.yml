@@ -15,5 +15,8 @@ spring:
       path: /h2
 server:
   port: 8080
+springdoc:
+  api-docs:
+    path: /api-docs
 caching:
   ttl: 30
