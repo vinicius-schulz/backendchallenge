@@ -1,10 +1,8 @@
 # backendchallenge
-Trustly Technical Challenge for Developers
-API that returns the total number of lines and the total number of bytes of all the files of a given public Github repository, grouped by file extension.
+Trustly Technical Challenge for Developers: API that returns the total number of lines and the total number of bytes of all the files of a given public Github repository, grouped by file extension.
 
 ## Author
-Vinícius Schulz
-email: vinicius-schulz@hotmail.com
+Vinícius Schulz - vinicius-schulz@hotmail.com
 
 ## Instalation Instructions to Execute Locally - NO DOCKER
 
