@@ -1,5 +1,8 @@
 package br.com.trustly.schulz.backendchallenge.service;
 
+import java.io.IOException;
+
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +19,7 @@ public class GitHubRepositoryInformationService extends AbstractBaseInformationS
 	private final CacheEntityComponent cacheEntityComponent;
 	private String workspace;
 	private String repository;
+	private String branch;
 
 	@Autowired
 	public GitHubRepositoryInformationService(CacheEntityComponent cacheEntityComponent) {
@@ -24,20 +28,20 @@ public class GitHubRepositoryInformationService extends AbstractBaseInformationS
 	}
 
 	@Transactional
-	public ListGitDetailDto getGithubRepositoryDetails(String workspace, String repository) {
+	public ListGitDetailDto getGithubRepositoryDetails(String workspace, String repository, String branch)
+			throws GitAPIException, IOException {
 
 		this.workspace = workspace;
 		this.repository = repository;
+		this.branch = branch;
 
-		super.getGitRepositoryDetails();
-
-		return null;
+		return super.getGitRepositoryDetails();
 	}
 
 	@Override
 	protected GitAdapter getGitAdapter() {
 		return new GitHubImplAdapter(
-				"https://github.com/".concat(workspace).concat("/").concat(repository).concat(".git'"));
+				"https://github.com/".concat(workspace).concat("/").concat(repository).concat(".git"), branch);
 	}
 
 }

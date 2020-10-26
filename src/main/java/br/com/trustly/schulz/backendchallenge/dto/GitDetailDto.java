@@ -10,9 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
 public class GitDetailDto {
-
 	private Integer amount;
 	private Long size;
 	private String extension;
-
 }

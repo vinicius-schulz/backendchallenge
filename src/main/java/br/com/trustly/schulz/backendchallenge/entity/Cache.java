@@ -1,7 +1,5 @@
 package br.com.trustly.schulz.backendchallenge.entity;
 
-import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,12 +28,9 @@ public class Cache implements BaseEntity<Long> {
 	@Column(name = "term", nullable = false)
 	private String term;
 
-//	@Column(name = "instant", nullable = false)
-//	private LocalDateTime instant;
-
 	@Column(name = "response", nullable = true)
 	private String response;
 
-	@Column(name = "commit_id", nullable = true)
-	private String commitId;
+	@Column(name = "branch", nullable = false)
+	private String branch;
 }

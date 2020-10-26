@@ -10,6 +10,6 @@ import br.com.trustly.schulz.backendchallenge.entity.Cache;
 @Repository
 public interface CacheRepository extends JpaRepository<Cache, Long> {
 
-	public Optional<Cache> findByTermAndCommitId(String term, String commitId);
+	public Optional<Cache> findByTermAndBranch(String term, String branch);
 
 }

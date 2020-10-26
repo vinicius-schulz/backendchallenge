@@ -6,11 +6,10 @@ import lombok.Getter;
 public abstract class GitAdapter {
 
 	private final String gitUrl;
+	private final String branch;
 
-	public GitAdapter(String gitUrl) {
+	public GitAdapter(String gitUrl, String branch) {
 		this.gitUrl = gitUrl;
-
+		this.branch = branch;
 	}
-
-	public abstract String getLastCommitId();
 }
