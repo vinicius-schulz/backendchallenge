@@ -8,6 +8,11 @@ import org.springframework.stereotype.Component;
 import br.com.trustly.schulz.backendchallenge.entity.Cache;
 import br.com.trustly.schulz.backendchallenge.repository.CacheRepository;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 @Component
 public class CacheEntityComponent {
 

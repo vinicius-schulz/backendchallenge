@@ -8,6 +8,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.Data;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 @Data
 @JsonInclude(Include.NON_NULL)
 public class ListGitDetailDto {

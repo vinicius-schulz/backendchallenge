@@ -9,6 +9,11 @@ import br.com.trustly.schulz.backendchallenge.gitadapter.GitHubImplAdapter;
 import br.com.trustly.schulz.backendchallenge.gitadapter.base.RepositoryAdapter;
 import br.com.trustly.schulz.backendchallenge.service.base.AbstractBaseInformationService;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 @Service
 public class GitHubRepositoryInformationService extends AbstractBaseInformationService {
 

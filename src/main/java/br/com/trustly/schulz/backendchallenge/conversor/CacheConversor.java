@@ -5,6 +5,11 @@ import com.google.gson.Gson;
 import br.com.trustly.schulz.backendchallenge.dto.ListGitDetailDto;
 import br.com.trustly.schulz.backendchallenge.entity.Cache;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 public final class CacheConversor {
 
 	private CacheConversor() {

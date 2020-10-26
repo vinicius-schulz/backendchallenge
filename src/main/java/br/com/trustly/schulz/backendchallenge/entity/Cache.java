@@ -12,6 +12,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 @Getter
 @Setter
 @NoArgsConstructor

@@ -15,18 +15,29 @@ import br.com.trustly.schulz.backendchallenge.dto.ListGitDetailDto;
 import br.com.trustly.schulz.backendchallenge.gitadapter.base.RepositoryAdapter;
 import br.com.trustly.schulz.backendchallenge.utils.FileUtils;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 public class GitHubImplAdapter extends RepositoryAdapter {
 
 	public GitHubImplAdapter(String gitUrl) {
 		super(gitUrl);
 	}
 
+	
 	@Override
 	public ListGitDetailDto getListDetails() throws IOException {
 		readTree(getGitUrl());
 		return getDetails();
 	}
 
+	/**
+	 * Function to read the github's directory tree 
+	 * @param url github's link
+	 * @throws IOException exception throws in erro case
+	 */
 	private void readTree(String url) throws IOException {
 
 		Document doc = Jsoup.connect(url).get();
@@ -47,6 +58,12 @@ public class GitHubImplAdapter extends RepositoryAdapter {
 
 	}
 
+	/**
+	 * Function to include extension, size and lines into ListGitDetailDto details
+	 * @param extension file extension
+	 * @param size 
+	 * @param lines
+	 */
 	private void includeGitDetailDto(String extension, Long size, Integer lines) {
 		Boolean found = false;
 		for (GitDetailDto item : getDetails().getDetails()) {
@@ -68,6 +85,11 @@ public class GitHubImplAdapter extends RepositoryAdapter {
 
 	}
 
+	/**
+	 * Function to read github's file blob 
+	 * @param fName file path
+	 * @throws IOException
+	 */
 	private void readBlob(String fName) throws IOException {
 
 		String userUrl = fName;

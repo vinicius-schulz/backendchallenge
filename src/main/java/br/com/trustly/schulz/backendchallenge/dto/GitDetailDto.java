@@ -6,6 +6,11 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 @Data
 @NoArgsConstructor
 @JsonInclude(Include.NON_NULL)

@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import br.com.trustly.schulz.backendchallenge.entity.Cache;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 @Repository
 public interface CacheRepository extends JpaRepository<Cache, Long> {
 

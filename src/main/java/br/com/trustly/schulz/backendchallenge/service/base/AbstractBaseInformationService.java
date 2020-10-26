@@ -10,11 +10,20 @@ import br.com.trustly.schulz.backendchallenge.entity.Cache;
 import br.com.trustly.schulz.backendchallenge.entitycomponent.CacheEntityComponent;
 import br.com.trustly.schulz.backendchallenge.gitadapter.base.RepositoryAdapter;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 public abstract class AbstractBaseInformationService {
 
 	@Autowired
 	private CacheEntityComponent cacheEntityComponent;
 
+	/**
+	 * 
+	 * @return ListGitDetailDto 
+	 */
 	protected ListGitDetailDto getGitRepositoryDetails() {
 
 		try {

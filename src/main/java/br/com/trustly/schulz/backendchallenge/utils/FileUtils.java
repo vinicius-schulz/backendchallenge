@@ -2,6 +2,11 @@ package br.com.trustly.schulz.backendchallenge.utils;
 
 import com.google.common.io.Files;
 
+/**
+ * 
+ * @author vinicius.schulz
+ *
+ */
 public final class FileUtils {
 
 	private FileUtils() {
