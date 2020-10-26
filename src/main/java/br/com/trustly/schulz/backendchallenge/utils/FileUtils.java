@@ -13,11 +13,12 @@ public final class FileUtils {
 
 	}
 
+	/**
+	 * Utils fuction to get file extension
+	 * @param filename file name
+	 * @return
+	 */
 	public static String getExtension(String filename) {
 		return Files.getFileExtension(filename);
-	}
-
-	public static String getName(String filename) {
-		return Files.getNameWithoutExtension(filename);
 	}
 }

@@ -25,6 +25,13 @@ public class GitHubRepositoryInformationService extends AbstractBaseInformationS
 		super();
 	}
 
+	/**
+	 * Fuction to get ListGitDetailDto from workspace and repository
+	 * 
+	 * @param workspace  workspace identifier
+	 * @param repository repository name
+	 * @return
+	 */
 	@Transactional
 	public ListGitDetailDto getGithubRepositoryDetails(String workspace, String repository) {
 
@@ -34,6 +41,9 @@ public class GitHubRepositoryInformationService extends AbstractBaseInformationS
 		return getGitRepositoryDetails();
 	}
 
+	/**
+	 * Fuction to build github's url from workspace and repository.
+	 */
 	@Override
 	protected RepositoryAdapter getGitAdapter() {
 		return new GitHubImplAdapter("https://github.com/".concat(workspace).concat("/").concat(repository));

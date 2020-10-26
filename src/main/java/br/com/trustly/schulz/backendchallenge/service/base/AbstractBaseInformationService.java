@@ -21,8 +21,10 @@ public abstract class AbstractBaseInformationService {
 	private CacheEntityComponent cacheEntityComponent;
 
 	/**
+	 * Generic function to get ListGitDetailDto from any RepositoryAdapter
+	 * implementation
 	 * 
-	 * @return ListGitDetailDto 
+	 * @return ListGitDetailDto
 	 */
 	protected ListGitDetailDto getGitRepositoryDetails() {
 
@@ -37,9 +39,7 @@ public abstract class AbstractBaseInformationService {
 				return CacheConversor.cacheToListGitDetailDto(cache);
 			}
 
-			ListGitDetailDto details;
-
-			details = adapter.getListDetails();
+			final ListGitDetailDto details = adapter.getListDetails();
 
 			String response = CacheConversor.listGitDetailDtoToJson(details);
 
