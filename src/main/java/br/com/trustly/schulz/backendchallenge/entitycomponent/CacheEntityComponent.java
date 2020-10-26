@@ -21,9 +21,8 @@ public class CacheEntityComponent {
 	 * @param commitId branch commit id
 	 * @return object create from params
 	 */
-	public Cache createCache(String term, String response, String branch) {
+	public Cache createCache(String term, String response) {
 		Cache cache = new Cache();
-		cache.setBranch(branch);
 		cache.setResponse(response);
 		cache.setTerm(term);
 
@@ -37,9 +36,9 @@ public class CacheEntityComponent {
 	 * @param term term used to search
 	 * @return persisted cache or null
 	 */
-	public Cache getCacheFromTermAndBranch(String term, String branch) {
+	public Cache getCacheFromTerm(String term) {
 
-		Optional<Cache> cacheOpt = cacheRepository.findByTermAndBranch(term, branch);
+		Optional<Cache> cacheOpt = cacheRepository.findByTerm(term);
 		if (cacheOpt.isPresent()) {
 			return cacheOpt.get();
 		}

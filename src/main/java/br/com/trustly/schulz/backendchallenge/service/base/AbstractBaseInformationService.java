@@ -1,46 +1,47 @@
 package br.com.trustly.schulz.backendchallenge.service.base;
 
 import java.io.IOException;
-import java.nio.file.Path;
 
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.trustly.schulz.backendchallenge.conversor.CacheConversor;
 import br.com.trustly.schulz.backendchallenge.dto.ListGitDetailDto;
 import br.com.trustly.schulz.backendchallenge.entity.Cache;
 import br.com.trustly.schulz.backendchallenge.entitycomponent.CacheEntityComponent;
-import br.com.trustly.schulz.backendchallenge.gitadapter.base.GitAdapter;
-import br.com.trustly.schulz.backendchallenge.utils.FileUtils;
-import br.com.trustly.schulz.backendchallenge.utils.GitUtils;
+import br.com.trustly.schulz.backendchallenge.gitadapter.base.RepositoryAdapter;
 
 public abstract class AbstractBaseInformationService {
 
 	@Autowired
 	private CacheEntityComponent cacheEntityComponent;
 
-	protected ListGitDetailDto getGitRepositoryDetails() throws GitAPIException, IOException {
-		GitAdapter adapter = getGitAdapter();
+	protected ListGitDetailDto getGitRepositoryDetails() {
 
-		String term = adapter.getGitUrl();
-		String branch = adapter.getBranch();
+		try {
+			RepositoryAdapter adapter = getGitAdapter();
 
-		Cache cache = cacheEntityComponent.getCacheFromTermAndBranch(term, branch);
+			String term = adapter.getGitUrl();
 
-		if (cache != null) {
-			return CacheConversor.cacheToListGitDetailDto(cache);
+			Cache cache = cacheEntityComponent.getCacheFromTerm(term);
+
+			if (cache != null) {
+				return CacheConversor.cacheToListGitDetailDto(cache);
+			}
+
+			ListGitDetailDto details;
+
+			details = adapter.getListDetails();
+
+			String response = CacheConversor.listGitDetailDtoToJson(details);
+
+			cacheEntityComponent.createCache(term, response);
+			return details;
+		} catch (IOException e) {
+			throw new RuntimeException("Error to get repository", e);
 		}
-
-		Path path = GitUtils.cloneBranch(term, branch);
-
-		FileUtils.deleteDirectoryStream(path);
-
-		cache = cacheEntityComponent.createCache(term, "", branch);
-
-		return null;
 
 	}
 
-	protected abstract GitAdapter getGitAdapter();
+	protected abstract RepositoryAdapter getGitAdapter();
 
 }

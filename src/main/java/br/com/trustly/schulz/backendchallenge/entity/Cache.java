@@ -30,7 +30,4 @@ public class Cache implements BaseEntity<Long> {
 
 	@Column(name = "response", nullable = true)
 	private String response;
-
-	@Column(name = "branch", nullable = false)
-	private String branch;
 }

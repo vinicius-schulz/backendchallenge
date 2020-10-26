@@ -1,8 +1,5 @@
 package br.com.trustly.schulz.backendchallenge.api;
 
-import java.io.IOException;
-
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,10 +28,10 @@ public class GitRepositoryInformationController {
 			@ApiResponse(responseCode = "400", description = "Invalid workspace or user repository", content = @Content),
 			@ApiResponse(responseCode = "404", description = "Details not found", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Unknow error", content = @Content) })
-	@GetMapping("/github/{workspace}/{repository}/{branch}")
+	@GetMapping("/github/{workspace}/{repository}")
 	public ResponseEntity<ListGitDetailDto> getGithubRepositoryDetails(@PathVariable String workspace,
-			@PathVariable String repository, @PathVariable String branch) throws GitAPIException, IOException {
+			@PathVariable String repository) {
 		return ResponseEntity.ok()
-				.body(gitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository, branch));
+				.body(gitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
 	}
 }
