@@ -11,9 +11,16 @@ Clone the project:
 git clone https://github.com/vinicius-schulz/backendchallenge.git
 ```
 
-Execute the build using the command:
+Execute the follow command to clean and build the application:
+
 ```
-mvn install 
+mvn clean install 
+```
+
+Execute the follow command to run the application:
+
+```
+mvn spring-boot:run
 ```
 
 ## Instalation Instructions to Execute Locally - DOCKER
