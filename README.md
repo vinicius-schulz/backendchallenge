@@ -50,12 +50,6 @@ Run the follow command to remove your created container.
 ```
 docker container rm -f <container-name>
 ```
- 
-
-```
-docker container rm -f <container-name>
-```
-
 
 ## Environment
 
