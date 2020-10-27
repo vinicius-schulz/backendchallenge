@@ -4,7 +4,7 @@ Trustly Technical Challenge for Developers: API that returns the total number of
 ## Author
 Vinícius Schulz - vinicius-schulz@hotmail.com
 
-## Instalation Instructions to Execute Locally - NO DOCKER
+## Instructions to local execution - NO DOCKER
 
 Clone the project:
 ```
@@ -23,7 +23,7 @@ Execute the follow command to run the application:
 mvn spring-boot:run
 ```
 
-## Instalation Instructions to Execute Locally - DOCKER
+## Instructions to local execution - DOCKER
 
 Run the follow command to pull backendchallenge's image from hub.docker.com to your local.
 
