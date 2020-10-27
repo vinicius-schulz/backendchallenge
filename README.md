@@ -18,10 +18,19 @@ mvn install
 
 ## Instalation Instructions to Execute Locally - DOCKER
 
+Run the follow command to pull backendchallenge's image from hub.docker.com to your local.
+
 ```
 docker pull viniciusschulz/backendchallenge
 ```
-Run the above container from hub.docker.com registry, mapping to the port internal port 8080 
+
+Run the follow command to create and run a container.
+ 
+```
+docker run -idt -p <port>:8080 --name <container-name> viniciusschulz/backendchallenge
+```
+
+Ps: You can run only the second command. That will, pull, create and run automatically you container. Remember to choose the local port (for example: 8080) and define the container name.
 
 ## Environment
 
