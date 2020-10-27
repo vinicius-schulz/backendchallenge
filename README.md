@@ -21,7 +21,7 @@ mvn install
 ```
 docker push viniciusschulz/backendchallenge:lastest
 ```
-Run the above container, mapping to the port internal port 8080 
+Run the above container from hub.docker.com registry, mapping to the port internal port 8080 
 
 ## Environment
 
