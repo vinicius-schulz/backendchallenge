@@ -19,7 +19,7 @@ mvn install
 ## Instalation Instructions to Execute Locally - DOCKER
 
 ```
-docker push viniciusschulz/backendchallenge:lastest
+docker pull viniciusschulz/backendchallenge
 ```
 Run the above container from hub.docker.com registry, mapping to the port internal port 8080 
 
