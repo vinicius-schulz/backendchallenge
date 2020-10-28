@@ -19,9 +19,9 @@ import br.com.trustly.schulz.backendchallenge.utils.FileUtils;
  * @author vinicius.schulz
  *
  */
-public class GitHubImplAdapter extends RepositoryAdapter {
+public class JsoupGitHubImplAdapter extends RepositoryAdapter {
 
-	public GitHubImplAdapter(String gitUrl) {
+	public JsoupGitHubImplAdapter(String gitUrl) {
 		super(gitUrl);
 	}
 

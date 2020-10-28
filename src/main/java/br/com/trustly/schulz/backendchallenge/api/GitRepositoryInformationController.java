@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.trustly.schulz.backendchallenge.dto.ListGitDetailDto;
-import br.com.trustly.schulz.backendchallenge.service.GitHubRepositoryInformationService;
 import br.com.trustly.schulz.backendchallenge.service.JgitGitHubRepositoryInformationService;
+import br.com.trustly.schulz.backendchallenge.service.MatcherGitHubRepositoryInformationService;
+import br.com.trustly.schulz.backendchallenge.service.SoupGitHubRepositoryInformationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,32 +30,54 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class GitRepositoryInformationController {
 
 	@Autowired
-	private GitHubRepositoryInformationService gitHubRepositoryInformationService;
-	
+	private SoupGitHubRepositoryInformationService gitHubRepositoryInformationService;
+
 	@Autowired
 	private JgitGitHubRepositoryInformationService jgitGitHubRepositoryInformationService;
-	
 
-	@Operation(summary = "Get github's public repository information", description = "Github's repository information by workspace and repository")
+	@Autowired
+	private MatcherGitHubRepositoryInformationService httpClientGitHubRepositoryInformationService;
+
+	@Operation(summary = "Get github's public repository information - Jsoup method", description = "Github's repository information by workspace and repository using jsoup method")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Details found", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ListGitDetailDto.class)) }),
+			@ApiResponse(responseCode = "400", description = "Invalid workspace or user repository", content = @Content),
+			@ApiResponse(responseCode = "404", description = "Details not found", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Unknow error", content = @Content) })
+	@GetMapping(value = "/github/jsoup/{workspace}/{repository}", produces = "application/json")
+	public ResponseEntity<ListGitDetailDto> getJSoupGithubRepositoryDetails(
+			@Parameter(description = "Gihub's workspace identifier", example = "vinicius-schulz") @PathVariable(required = true) String workspace,
+			@Parameter(description = "Gihub's repository identifier", example = "backendchallenge") @PathVariable(required = true) String repository) {
+		return ResponseEntity.ok()
+				.body(gitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
+	}
+
+	@Operation(summary = "Get github's public repository information - Jgit method", description = "Github's repository information by workspace and repository using jgit method")
+	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Details found", content = {
+			@Content(mediaType = "application/json", schema = @Schema(implementation = ListGitDetailDto.class)) }),
+			@ApiResponse(responseCode = "400", description = "Invalid workspace or user repository", content = @Content),
+			@ApiResponse(responseCode = "404", description = "Details not found", content = @Content),
+			@ApiResponse(responseCode = "500", description = "Unknow error", content = @Content) })
+	@GetMapping(value = "/github/jgit/{workspace}/{repository}", produces = "application/json")
+	public ResponseEntity<ListGitDetailDto> getJgitGithubRepositoryDetails(
+			@Parameter(description = "Gihub's workspace identifier", example = "vinicius-schulz") @PathVariable(required = true) String workspace,
+			@Parameter(description = "Gihub's repository identifier", example = "backendchallenge") @PathVariable(required = true) String repository) {
+		return ResponseEntity.ok()
+				.body(jgitGitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
+	}
+
+	@Operation(summary = "Get github's public repository information - Matcher method", description = "Github's repository information by workspace and repository using matcher method")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Details found", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ListGitDetailDto.class)) }),
 			@ApiResponse(responseCode = "400", description = "Invalid workspace or user repository", content = @Content),
 			@ApiResponse(responseCode = "404", description = "Details not found", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Unknow error", content = @Content) })
 
-	@GetMapping(value = "/github/{workspace}/{repository}", produces = "application/json")
-	public ResponseEntity<ListGitDetailDto> getGithubRepositoryDetails(
+	@GetMapping(value = "/github/regex/{workspace}/{repository}", produces = "application/json")
+	public ResponseEntity<ListGitDetailDto> getHttpClientGithubRepositoryDetails(
 			@Parameter(description = "Gihub's workspace identifier", example = "vinicius-schulz") @PathVariable(required = true) String workspace,
 			@Parameter(description = "Gihub's repository identifier", example = "backendchallenge") @PathVariable(required = true) String repository) {
 		return ResponseEntity.ok()
-				.body(gitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
-	}
-	
-	@GetMapping(value = "/{workspace}/{repository}", produces = "application/json")
-	public ResponseEntity<ListGitDetailDto> getGitGithubRepositoryDetails(
-			@Parameter(description = "Gihub's workspace identifier", example = "vinicius-schulz") @PathVariable(required = true) String workspace,
-			@Parameter(description = "Gihub's repository identifier", example = "backendchallenge") @PathVariable(required = true) String repository) {
-		return ResponseEntity.ok()
-				.body(jgitGitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
+				.body(httpClientGitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
 	}
 }

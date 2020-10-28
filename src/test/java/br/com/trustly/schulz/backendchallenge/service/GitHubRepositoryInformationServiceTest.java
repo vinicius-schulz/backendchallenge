@@ -23,7 +23,7 @@ public class GitHubRepositoryInformationServiceTest {
 	private CacheEntityComponent cacheEntityComponent;
 
 	@InjectMocks
-	private GitHubRepositoryInformationService gitHubRepositoryInformationService;
+	private SoupGitHubRepositoryInformationService gitHubRepositoryInformationService;
 
 	Cache cache;
 

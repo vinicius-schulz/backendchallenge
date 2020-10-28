@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.trustly.schulz.backendchallenge.dto.ListGitDetailDto;
-import br.com.trustly.schulz.backendchallenge.gitadapter.GitHubImplAdapter;
+import br.com.trustly.schulz.backendchallenge.gitadapter.MatcherGitHubImplAdapter;
 import br.com.trustly.schulz.backendchallenge.gitadapter.base.RepositoryAdapter;
 import br.com.trustly.schulz.backendchallenge.service.base.AbstractBaseInformationService;
 
@@ -15,13 +15,13 @@ import br.com.trustly.schulz.backendchallenge.service.base.AbstractBaseInformati
  *
  */
 @Service
-public class GitHubRepositoryInformationService extends AbstractBaseInformationService {
+public class MatcherGitHubRepositoryInformationService extends AbstractBaseInformationService {
 
 	private String workspace;
 	private String repository;
 
 	@Autowired
-	public GitHubRepositoryInformationService() {
+	public MatcherGitHubRepositoryInformationService() {
 		super();
 	}
 
@@ -46,7 +46,7 @@ public class GitHubRepositoryInformationService extends AbstractBaseInformationS
 	 */
 	@Override
 	protected RepositoryAdapter getGitAdapter() {
-		return new GitHubImplAdapter("https://github.com/".concat(workspace).concat("/").concat(repository));
+		return new MatcherGitHubImplAdapter("https://github.com/".concat(workspace).concat("/").concat(repository));
 	}
 
 }

@@ -14,13 +14,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import br.com.trustly.schulz.backendchallenge.dto.ListGitDetailDto;
-import br.com.trustly.schulz.backendchallenge.service.GitHubRepositoryInformationService;
+import br.com.trustly.schulz.backendchallenge.service.SoupGitHubRepositoryInformationService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GitRepositoryInformationControllerTest {
 
 	@Mock
-	private GitHubRepositoryInformationService gitHubRepositoryInformationService;
+	private SoupGitHubRepositoryInformationService gitHubRepositoryInformationService;
 
 	@InjectMocks
 	private GitRepositoryInformationController gitRepositoryInformationController;
@@ -33,7 +33,7 @@ public class GitRepositoryInformationControllerTest {
 	@Test
 	public void getGithubRepositoryDetailsTest() {
 		ResponseEntity<ListGitDetailDto> resposta = gitRepositoryInformationController
-				.getGithubRepositoryDetails(Mockito.anyString(), Mockito.anyString());
+				.getJSoupGithubRepositoryDetails(Mockito.anyString(), Mockito.anyString());
 
 		assertThat(resposta.getStatusCode()).isEqualTo(HttpStatus.OK);
 	}
