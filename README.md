@@ -2,18 +2,18 @@
 Trustly Technical Challenge for Developers: API that returns the total number of lines and the total number of bytes of all the files of a given public Github repository, grouped by file extension.
 
 
-## Initial considerations
+## 1. Initial considerations
 I builded the proposed challenge in three differents ways. The first one, i build using the Jsop library to manipulate the github's html page to found out the file's links (most efficient way). The second way, i builded the solution using the Jgit library, which i cloned the repository to a local directory, and then i read the file's properties (less efficient). 
 At last, i builded using regular expression, to match file path name with my regex.
 Both solutions solve the problem, the difference are in resource usage; i consider the second one worst than others in this point, because i have a effort to clone the entire repository before begin read the file's properties.
 
 
-## Author
+## 2. Author
 Vinícius Schulz - vinicius-schulz@hotmail.com
 
-## Instructions to local execution
+## 3. Instructions to local execution
 
-### Cloning and executing from from repository
+### 3.1 Cloning and executing from repository
 
 Clone the project:
 ```
@@ -32,7 +32,7 @@ Execute the follow command to run the application:
 mvn spring-boot:run
 ```
 
-### Pulling a Docker Image
+### 3.2 Pulling a Docker Image
 
 Run the follow command to pull backendchallenge's image from hub.docker.com to your local.
 
@@ -60,27 +60,27 @@ Run the follow command to remove your created container.
 docker container rm -f <container-name>
 ```
 
-## Environment
+## 4. Environment
 
-### AWS 
+### 4.1 AWS 
 External URL: http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/
 
-## Documentation
+## 5. Documentation
 Swagger: http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/swagger-ui.html
 
-### API requisition example
+### 5.1. API requisition example
 
-#### Method 1 - Using Soup
+#### 5.1.1. Method 1 - Using Soup
 ```
 http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/git-repository-information/github/jsoup/vinicius-schulz/backendchallenge
 ```
 
-#### Method 2 - Using Jgit
+#### 5.1.2. Method 2 - Using Jgit
 ```
 http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/git-repository-information/github/jgit/vinicius-schulz/backendchallenge
 ```
 
-#### Method 3 - Using Regular Expression
+#### 5.1.3. Method 3 - Using Regular Expression
 ```
 http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/git-repository-information/github/regex/vinicius-schulz/backendchallenge
 ```
