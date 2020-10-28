@@ -5,7 +5,7 @@ Trustly Technical Challenge for Developers: API that returns the total number of
 ## Initial considerations
 I builded the proposed challenge in three differents ways. The first one, i build using the Jsop library to manipulate the github's html page to found out the file's links (most efficient way). The second way, i builded the solution using the Jgit library, which i cloned the repository to a local directory, and then i read the file's properties (less efficient). 
 At last, i builded using regular expression, to match file path name with my regex.
-Both solutions solve the problem, the difference are in resource usage; i consider the second one worst than in this point, because i have a effort to clone the entire repository before begin read the file's properties.
+Both solutions solve the problem, the difference are in resource usage; i consider the second one worst than others in this point, because i have a effort to clone the entire repository before begin read the file's properties.
 
 
 ## Author
