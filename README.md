@@ -32,7 +32,7 @@ Execute the follow command to run the application:
 mvn spring-boot:run
 ```
 
-### 3.2 Pulling and Running a Docker image
+### 3.2 Pulling and Running from a Docker Image
 
 Run the follow command to pull backendchallenge's image from hub.docker.com to your local.
 
