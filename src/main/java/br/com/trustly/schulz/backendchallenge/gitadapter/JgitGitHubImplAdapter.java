@@ -27,20 +27,22 @@ public class JgitGitHubImplAdapter extends RepositoryAdapter {
 	@Override
 	public ListGitDetailDto getListDetails() {
 		try {
-			String path = cloneRepository();
-			directoryNavigate(path);
+			File file = cloneRepository();
+			directoryNavigate(file.getAbsolutePath());
+			FileUtils.deleteDirectoryStream(file.toPath());
+
 			return getDetails();
 		} catch (Exception e) {
 			throw new RuntimeException("Failed to git information.", e);
 		}
 	}
 
-	private String cloneRepository() throws GitAPIException {
+	private File cloneRepository() throws GitAPIException {
 		String uuid = UUID.randomUUID().toString();
 		File file = new File("/repositories/".concat(uuid));
 		Git git = Git.cloneRepository().setURI(getGitUrl()).setDirectory(file).call();
 		git.close();
-		return file.getAbsolutePath();
+		return file;
 	}
 
 	private void directoryNavigate(String directoryName) throws IOException {
