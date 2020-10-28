@@ -11,7 +11,9 @@ Both solutions solve the problem, the difference are in resource usage; i consid
 ## Author
 Vinícius Schulz - vinicius-schulz@hotmail.com
 
-## Instructions to local execution - NO DOCKER
+## Instructions to local execution
+
+### Cloning and executing from from repository
 
 Clone the project:
 ```
@@ -30,7 +32,7 @@ Execute the follow command to run the application:
 mvn spring-boot:run
 ```
 
-## Instructions to local execution - DOCKER
+### Pulling a Docker Image
 
 Run the follow command to pull backendchallenge's image from hub.docker.com to your local.
 
