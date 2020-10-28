@@ -44,7 +44,7 @@ Run the follow command to create and run a container.
 docker run -idt -p <port>:8080 --name <container-name> viniciusschulz/backendchallenge
 ```
 
-Ps: You can run only the second command. That will, pull, create and run automatically you container in daemon mode. Remember to choose the local port (for example: 8080) and define the container name.
+Ps: You can run only the second command. That will, pull, create and run automatically the container in daemon mode. Remember to choose the local port (for example: 8080) and define the container name.
 
 Run the follow command to stop your created container.
 
