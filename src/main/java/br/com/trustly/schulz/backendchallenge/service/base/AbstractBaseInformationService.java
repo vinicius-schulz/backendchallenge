@@ -1,7 +1,5 @@
 package br.com.trustly.schulz.backendchallenge.service.base;
 
-import java.io.IOException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.trustly.schulz.backendchallenge.conversor.CacheConversor;
@@ -28,26 +26,22 @@ public abstract class AbstractBaseInformationService {
 	 */
 	protected ListGitDetailDto getGitRepositoryDetails() {
 
-		try {
-			RepositoryAdapter adapter = getGitAdapter();
+		RepositoryAdapter adapter = getGitAdapter();
 
-			String term = adapter.getGitUrl();
+		String term = adapter.getGitUrl();
 
-			Cache cache = cacheEntityComponent.getCacheFromTerm(term);
+		Cache cache = cacheEntityComponent.getCacheFromTerm(term);
 
-			if (cache != null) {
-				return CacheConversor.cacheToListGitDetailDto(cache);
-			}
-
-			final ListGitDetailDto details = adapter.getListDetails();
-
-			String response = CacheConversor.listGitDetailDtoToJson(details);
-
-			cacheEntityComponent.createCache(term, response);
-			return details;
-		} catch (IOException e) {
-			throw new RuntimeException("Error to get repository", e);
+		if (cache != null) {
+			return CacheConversor.cacheToListGitDetailDto(cache);
 		}
+
+		final ListGitDetailDto details = adapter.getListDetails();
+
+		String response = CacheConversor.listGitDetailDtoToJson(details);
+
+		cacheEntityComponent.createCache(term, response);
+		return details;
 
 	}
 

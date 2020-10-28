@@ -10,7 +10,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
-import br.com.trustly.schulz.backendchallenge.dto.GitDetailDto;
 import br.com.trustly.schulz.backendchallenge.dto.ListGitDetailDto;
 import br.com.trustly.schulz.backendchallenge.gitadapter.base.RepositoryAdapter;
 import br.com.trustly.schulz.backendchallenge.utils.FileUtils;
@@ -26,15 +25,19 @@ public class GitHubImplAdapter extends RepositoryAdapter {
 		super(gitUrl);
 	}
 
-	
 	@Override
-	public ListGitDetailDto getListDetails() throws IOException {
-		readTree(getGitUrl());
-		return getDetails();
+	public ListGitDetailDto getListDetails() {
+		try {
+			readTree(getGitUrl());
+			return getDetails();
+		} catch (Exception e) {
+			throw new RuntimeException("Failed to git information.", e);
+		}
 	}
 
 	/**
-	 * Function to read the github's directory tree 
+	 * Function to read the github's directory tree
+	 * 
 	 * @param url github's link
 	 * @throws IOException exception throws in erro case
 	 */
@@ -59,34 +62,8 @@ public class GitHubImplAdapter extends RepositoryAdapter {
 	}
 
 	/**
-	 * Function to include extension, size and lines into ListGitDetailDto details
-	 * @param extension file extension
-	 * @param size 
-	 * @param lines
-	 */
-	private void includeGitDetailDto(String extension, Long size, Integer lines) {
-		Boolean found = false;
-		for (GitDetailDto item : getDetails().getDetails()) {
-			if (extension.equals(item.getExtension())) {
-				item.setLines(item.getLines() + lines);
-				item.setSize(item.getSize() + size);
-				found = true;
-				break;
-			}
-		}
-
-		if (!found) {
-			GitDetailDto detail = new GitDetailDto();
-			detail.setExtension(extension);
-			detail.setLines(lines);
-			detail.setSize(size);
-			getDetails().getDetails().add(detail);
-		}
-
-	}
-
-	/**
-	 * Function to read github's file blob 
+	 * Function to read github's file blob
+	 * 
 	 * @param fName file path
 	 * @throws IOException
 	 */

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.trustly.schulz.backendchallenge.dto.ListGitDetailDto;
 import br.com.trustly.schulz.backendchallenge.service.GitHubRepositoryInformationService;
+import br.com.trustly.schulz.backendchallenge.service.JgitGitHubRepositoryInformationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -29,6 +30,10 @@ public class GitRepositoryInformationController {
 
 	@Autowired
 	private GitHubRepositoryInformationService gitHubRepositoryInformationService;
+	
+	@Autowired
+	private JgitGitHubRepositoryInformationService jgitGitHubRepositoryInformationService;
+	
 
 	@Operation(summary = "Get github's public repository information", description = "Github's repository information by workspace and repository")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Details found", content = {
@@ -43,5 +48,13 @@ public class GitRepositoryInformationController {
 			@Parameter(description = "Gihub's repository identifier", example = "backendchallenge") @PathVariable(required = true) String repository) {
 		return ResponseEntity.ok()
 				.body(gitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
+	}
+	
+	@GetMapping(value = "/{workspace}/{repository}", produces = "application/json")
+	public ResponseEntity<ListGitDetailDto> getGitGithubRepositoryDetails(
+			@Parameter(description = "Gihub's workspace identifier", example = "vinicius-schulz") @PathVariable(required = true) String workspace,
+			@Parameter(description = "Gihub's repository identifier", example = "backendchallenge") @PathVariable(required = true) String repository) {
+		return ResponseEntity.ok()
+				.body(jgitGitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
 	}
 }
