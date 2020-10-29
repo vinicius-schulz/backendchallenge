@@ -16,7 +16,7 @@ spring:
       settings:
         web-allow-others: true
 server:
-  port: 8080
+  port: 80
 springdoc:
   api-docs:
     path: /api-docs
