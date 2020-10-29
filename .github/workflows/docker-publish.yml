@@ -14,8 +14,7 @@ on:
   pull_request:
 
 env:
-  # TODO: Change variable to your image's name.
-  IMAGE_NAME: image
+  IMAGE_NAME: backendchallenge
 
 jobs:
   # Run tests.
@@ -52,11 +51,11 @@ jobs:
 
       - name: Log into GitHub Container Registry
       # TODO: Create a PAT with `read:packages` and `write:packages` scopes and save it as an Actions secret `CR_PAT`
-        run: echo "${{ secrets.CR_PAT }}" | docker login https://index.docker.io/v1/ --username ${{ secrets.DOCKER_HUB_USER }} --password ${{ secrets.DOCKER_HUB_SECRET }}
+        run: echo "${{ secrets.CR_PAT }}" | docker login https://index.docker.io/v1/ --username viniciusschulz --password ${{ secrets.DOCKER_HUB_SECRET }}
 
       - name: Push image to Docker Hub Container Registry
         run: |
-          IMAGE_ID=${{ secrets.DOCKER_HUB_USER }}/${{ github.repository_owner }}/$IMAGE_NAME
+          IMAGE_ID=viniciusschulz/$IMAGE_NAME
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
