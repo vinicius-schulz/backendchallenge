@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  proxy:
+    image: traefik:2.2.1
+    command: --api.insecure=true --providers.docker
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    logging:
+      driver: 'json-file'
+      options:
+        max-file: '7'
+        max-size: '5m'
+  api:
+    image: viniciusschulz/backendchallenge:latest
+    restart: always
+    depends_on:
+      - proxy
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.backendchallenge.rule=Host(`viniciusschulz.com.br`)'
+      - 'traefik.http.services.backendchallenge.loadbalancer.server.port=8080'
+    logging:
+      driver: 'json-file'
+      options:
+        max-file: '7'
+        max-size: '5m'
+networks:
+  default:
+    name: traefik-net
+    external: true
