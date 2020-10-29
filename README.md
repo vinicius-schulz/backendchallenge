@@ -43,7 +43,7 @@ docker pull viniciusschulz/backendchallenge
 Run the follow command to create and run a container.
  
 ```
-docker run -idt -p <port>:8080 --name <container-name> viniciusschulz/backendchallenge
+docker run -idt -p <port>:80 --name <container-name> viniciusschulz/backendchallenge
 ```
 
 Ps: You can run only the second command. That will, pull, create and run automatically the container in daemon mode. Remember to choose the local port (for example: 8080) and define the container name.
