@@ -63,24 +63,24 @@ docker container rm -f <container-name>
 ## 4. Environment
 
 ### 4.1. AWS 
-External URL: http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/
+External URL: http://www.viniciusschulz.com.br:8080
 
 ## 5. Documentation
-Swagger: http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/swagger-ui.html
+Swagger: http://www.viniciusschulz.com.br:8080/swagger-ui.html
 
 ### 5.1. API requisition example
 
 #### 5.1.1. Method 1 - Using Soup
 ```
-http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/git-repository-information/github/jsoup/vinicius-schulz/backendchallenge
+http://www.viniciusschulz.com.br:8080/git-repository-information/github/jsoup/vinicius-schulz/backendchallenge
 ```
 
 #### 5.1.2. Method 2 - Using Jgit
 ```
-http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/git-repository-information/github/jgit/vinicius-schulz/backendchallenge
+http://www.viniciusschulz.com.br:8080/git-repository-information/github/jgit/vinicius-schulz/backendchallenge
 ```
 
 #### 5.1.3. Method 3 - Using Regular Expression
 ```
-http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com:8080/git-repository-information/github/regex/vinicius-schulz/backendchallenge
+http://www.viniciusschulz.com.br:8080/git-repository-information/github/regex/vinicius-schulz/backendchallenge
 ```
