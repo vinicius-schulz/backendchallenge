@@ -63,7 +63,11 @@ docker container rm -f <container-name>
 ## 4. Environment
 
 ### 4.1. AWS 
-External URL: http://www.viniciusschulz.com.br
+
+Custom DNS: http://www.viniciusschulz.com.br
+Original DNS: http://ec2-18-221-181-117.us-east-2.compute.amazonaws.com
+
+PS: Both DNS pointed to same machine, but for convenience questions, please use first one.
 
 ## 5. Documentation
 Swagger: http://www.viniciusschulz.com.br/swagger-ui.html
