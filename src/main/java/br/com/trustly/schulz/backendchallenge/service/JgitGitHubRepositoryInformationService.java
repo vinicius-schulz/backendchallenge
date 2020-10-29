@@ -47,7 +47,7 @@ public class JgitGitHubRepositoryInformationService extends AbstractBaseInformat
 	@Override
 	protected RepositoryAdapter getGitAdapter() {
 		return new JgitGitHubImplAdapter(
-				"https://github.com/".concat(workspace).concat("/").concat(repository).concat(".git"));
+				"https://github.com/".concat(workspace).concat("/").concat(repository));
 	}
 
 }

@@ -40,7 +40,7 @@ public class JgitGitHubImplAdapter extends RepositoryAdapter {
 	private File cloneRepository() throws GitAPIException {
 		String uuid = UUID.randomUUID().toString();
 		File file = new File("/repositories/".concat(uuid));
-		Git git = Git.cloneRepository().setURI(getGitUrl()).setDirectory(file).call();
+		Git git = Git.cloneRepository().setURI(getGitUrl().concat(".git")).setDirectory(file).call();
 		git.close();
 		return file;
 	}
