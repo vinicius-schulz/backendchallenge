@@ -7,8 +7,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,11 +21,8 @@ import br.com.trustly.schulz.backendchallenge.utils.FileUtils;
  */
 public class MatcherGitHubImplAdapter extends RepositoryAdapter {
 
-	private List<String> trees;
-
 	public MatcherGitHubImplAdapter(String gitUrl) {
 		super(gitUrl);
-		this.trees = new ArrayList<>();
 	}
 
 	@Override
@@ -66,9 +61,7 @@ public class MatcherGitHubImplAdapter extends RepositoryAdapter {
 							+ splitedUrl[0] + "\\/" + splitedUrl[1] + "\\/tree\\/[^\\\"]*\\\">")
 					.matcher(readStream);
 			while (treePattern.find()) {
-				if (!alreadyNavigated(treePattern.group())) {
-					readTree("https://github.com" + handleUrl(treePattern.group()));
-				}
+				readTree("https://github.com" + handleUrl(treePattern.group()));
 			}
 
 		} catch (Exception e) {
@@ -122,13 +115,5 @@ public class MatcherGitHubImplAdapter extends RepositoryAdapter {
 	private String handleUrl(String url) {
 		return url.replaceAll("<a class=\\\"js-navigation-open link-gray-dark\\\" title=\\\"[^\\\"]*\\\" href=\\\"", "")
 				.replace("\">", "");
-	}
-
-	private Boolean alreadyNavigated(String url) {
-		if (trees.contains(url)) {
-			return true;
-		}
-		trees.add(url);
-		return false;
 	}
 }
