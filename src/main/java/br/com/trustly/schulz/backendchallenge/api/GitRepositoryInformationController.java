@@ -2,6 +2,7 @@ package br.com.trustly.schulz.backendchallenge.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,7 @@ public class GitRepositoryInformationController {
 	@Autowired
 	private MatcherGitHubRepositoryInformationService httpClientGitHubRepositoryInformationService;
 
+	@CrossOrigin(origins = "*")
 	@Operation(summary = "Get github's public repository information - Jsoup method", description = "Github's repository information by workspace and repository using jsoup method")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Details found", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ListGitDetailDto.class)) }),
@@ -52,6 +54,7 @@ public class GitRepositoryInformationController {
 				.body(gitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
 	}
 
+	@CrossOrigin(origins = "*")
 	@Operation(summary = "Get github's public repository information - Jgit method", description = "Github's repository information by workspace and repository using jgit method")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Details found", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ListGitDetailDto.class)) }),
@@ -66,6 +69,7 @@ public class GitRepositoryInformationController {
 				.body(jgitGitHubRepositoryInformationService.getGithubRepositoryDetails(workspace, repository));
 	}
 
+	@CrossOrigin(origins = "*")
 	@Operation(summary = "Get github's public repository information - Matcher method", description = "Github's repository information by workspace and repository using matcher method")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Details found", content = {
 			@Content(mediaType = "application/json", schema = @Schema(implementation = ListGitDetailDto.class)) }),
