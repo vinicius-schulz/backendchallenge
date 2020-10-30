@@ -37,16 +37,16 @@ mvn spring-boot:run
 Run the follow command to pull backendchallenge's image from hub.docker.com to your local.
 
 ```
-docker pull viniciusschulz/backendchallenge:1.0.2
+docker pull viniciusschulz/backendchallenge:1.0.3
 ```
 
 Run the follow command to create and run a container.
  
 ```
-docker run -idt -p <port>:80 --name <container-name> viniciusschulz/backendchallenge:1.0.2
+docker run -idt -p <port>:80 --name <container-name> viniciusschulz/backendchallenge:1.0.3
 ```
 
-Ps: You can run only the second command. That will, pull, create and run automatically the container in daemon mode. Remember to choose the local port (for example: 8080) and define the container name. Futhermore, if you want pull the latest version on hub.docker.com, just remove the version 1.0.2.
+Ps: You can run only the second command. That will, pull, create and run automatically the container in daemon mode. Remember to choose the local port (for example: 8080) and define the container name. Futhermore, if you want pull the latest version on hub.docker.com, just remove the version 1.0.3.
 
 Run the follow command to stop your created container.
 
