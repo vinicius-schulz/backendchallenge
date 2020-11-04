@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.servers.Server;
 
 /**
  * 
@@ -21,9 +22,10 @@ public class SwaggerConfig {
 
 	@Bean
 	public OpenAPI customOpenAPI() {
-		return new OpenAPI().info(new Info().title("Trustly Technical Challenge for Developers").version("1.0.0")
-				.description("API that returns the total number of lines and the total number of bytes of all the\r\n"
-						+ "files of a given public Github repository, grouped by file extension."));
+		return new OpenAPI().addServersItem(new Server().url("/"))
+				.info(new Info().title("Trustly Technical Challenge for Developers").version("1.0.0").description(
+						"API that returns the total number of lines and the total number of bytes of all the\r\n"
+								+ "files of a given public Github repository, grouped by file extension."));
 	}
 
 	@Bean
